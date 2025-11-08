@@ -6,3 +6,13 @@ typedef struct {
     unsigned int tahun_produksi;
     unsigned int jumlah_unit;
 } Alat;
+
+int filekosong (const char*utils){
+    
+    FILE *fp = fopen ("utils.txt", "r");
+    if (fp == NULL){
+        return 1;
+    }
+}
+
+ 
