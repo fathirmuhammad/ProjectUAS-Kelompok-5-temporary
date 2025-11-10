@@ -1,21 +1,16 @@
 #include "../include/utils.h"
 
-// CATATAN: struct Alat dihapus dari sini, karena sudah ada di utils.h
 
-// Array global ini HANYA untuk user.c
 static Alat daftarAlat[maxSize];
 static int jumlahAlat = 0;
 
-// Simpan data ke file
 void simpanKeFile() {
-    // PERBAIKAN: Path file
     FILE *file = fopen("../data/alat.txt", "w"); 
     if (file == NULL) {
         printf("Gagal menyimpan ke file!\n");
         return;
     }
     for (int i = 0; i < jumlahAlat; i++) {
-        // Format fprintf sudah benar (sesuai standar baru)
         fprintf(file, "%u;%s;%s;%s;%u;%u;%u\n",
                 daftarAlat[i].id,
                 daftarAlat[i].nama,
@@ -28,21 +23,15 @@ void simpanKeFile() {
     fclose(file);
 }
 
-// Baca data dari file
 void bacaDariFile() {
-    // BUG KRITIS DIPERBAIKI: Mode 'w' diubah ke 'r'
-    // PERBAIKAN: Path file
     FILE *file = fopen("../data/alat.txt", "r"); 
     if (file == NULL) {
         printf("Gagal membuka file ../data/alat.txt (mungkin file belum ada?)\n");
-        // Jangan fclose(file) jika NULL
         return;
     }
 
-    // Reset jumlahAlat sebelum membaca
     jumlahAlat = 0; 
     
-    // Format fscanf sudah benar (sesuai standar baru)
     while (jumlahAlat < maxSize && 
            fscanf(file, "%u;%99[^;];%99[^;];%99[^;];%u;%u;%u\n",
                   &daftarAlat[jumlahAlat].id,
@@ -58,7 +47,6 @@ void bacaDariFile() {
     fclose(file);
 }
 
-/* FUNGSI FITUR (TIDAK BERUBAH) */
 void semuaAlat() {
     printf("\n=== DAFTAR SEMUA ALAT ===\n");
     printf("ID | Nama | Merek | Model | Tahun | Total | Tersedia\n");
@@ -95,8 +83,6 @@ void tersedia() {
     if (!ada) printf("Tidak ada alat yang tersedia.\n");
 }
 
-// Bug kecil: fungsi ini mengasumsikan ID = index+1. Ini berbahaya
-// jika ID tidak urut. Tapi kita biarkan dulu.
 void pinjamAlat() {
     unsigned int idCari;
     tersedia();
@@ -154,7 +140,6 @@ void kembalikanAlat() {
 }
 
 
-/* PERUBAHAN: main() diubah jadi menu_user()  */
 void menu_user() {
     int pilihan;
     bacaDariFile(); // Baca file saat menu user dimulai
