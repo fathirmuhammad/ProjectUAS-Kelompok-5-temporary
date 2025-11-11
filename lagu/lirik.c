@@ -21,7 +21,6 @@ int pengecekan(const char* word) {
 
 int main(){
 FILE* lagu = fopen("lirik.txt", "r");
-    
     if (lagu == NULL) {
         printf("Error\n");
         return 1; 
@@ -32,13 +31,11 @@ FILE* lagu = fopen("lirik.txt", "r");
     int barispertama = 1; 
 
     while (fgets(line, sizeof(line), lagu) != NULL) {
-        
         if (barispertama) {
             strcpy(judul, line);
             barispertama = 0;
             continue; 
-        }
-        
+        }    
         char *token = strtok(line, buang);
         while (token != NULL) {
             for (int i = 0; token[i] != '\0'; i++) {
