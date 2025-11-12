@@ -3,38 +3,28 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
-#define MAX_ALAT 80
-#define FILE_PATH "../data/alat.txt" 
-#define ADMIN_PATH "../data/admin.txt"
-#define USER_PATH "../data/user.txt"
+#define maxSize 80
 
-// == STRUCT RESMI UNTUK SELURUH PROYEK ==
-typedef struct {
-    unsigned int id;
-    char nama[100];
-    char merek[100];
-    char model[100];
-    unsigned int tahunProduksi;
-    unsigned int jumlahUnit;    // Total unit yang dimiliki
-    unsigned int tersedia;      // Unit yang sedang ada di lab
-} Alat;
-
-
+typedef struct{
+    unsigned int id_alat;
+    char nama_alat[maxSize];
+    char merk_alat[maxSize];
+    char model_alat[maxSize];
+    unsigned int tahun_produksi_alat;
+    unsigned int jumlah_alat;
+}alat_lab;
 
 int login(char *username, char *password);
+void load_alat(alat_lab *arr, int *n, char *nama_file);
 void menu_admin();
+void view_list();
+void view_list_pinjam();
+void edit_list();
+void add_alat();
+void delete_alat();
+void update_alat();
 void menu_user();
 
-
-void muatDataAlat();
-void simpanDataAlat();
-Alat* dapatkanSemuaAlat(int* jumlah);
-Alat* cariAlatById(unsigned int id);
-int tambahAlat(unsigned int id, char* nama, char* merek, char* model, unsigned int tahun, unsigned int jumlah);
-int hapusAlat(unsigned int id);
-int pinjamAlat(unsigned int id);
-int kembalikanAlat(unsigned int id);
-
 #endif
+

@@ -1,0 +1,6 @@
+1;Pulpen;Pilot;x1;2025;50
+2;Gelas Ukur;Lion Star;zx;2023;30
+3;Mikroskop;Olympus;CX23;2019;15
+4;Timbangan;Ohaus;PR224;2024;25
+5;Ph Meter;Apera;PH20;2023;40
+6;Pemanas;DLAB;MS-H-PRO;2024;5
