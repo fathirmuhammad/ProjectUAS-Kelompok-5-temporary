@@ -25,6 +25,8 @@ void add_alat();
 void delete_alat();
 void update_alat();
 void menu_user();
+void pinjam_alat();
+void kembalikan_alat();
 
 #endif
 
